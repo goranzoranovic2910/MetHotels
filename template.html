@@ -1,0 +1,74 @@
+<html>
+	<head>
+        <title>DZ02</title>
+        <link rel = "stylesheet" href = "css/style.css" type = "text/css">
+        <meta charset = "UTF-8">
+		
+		
+		
+    </head>
+ 
+    <body>
+	
+	<script>
+			function onLoadHandler(){
+				alert('Stranica je ucitana. Primer JavaScripta za zadatak 4!');
+			}
+			
+			function onResizeHandler(){
+				alert('Stranica je resizovana na velicinu ' + window.outerWidth + 'X' + window.outerHeight +' Primer JavaScripta za zadatak 4!');
+			}
+			
+			window.onload = onLoadHandler;
+			window.onresize = onResizeHandler;
+			
+	</script>
+	
+	<div id="pageBackground">
+		<img src = "images/image01.jpg" width="100%" ></img>
+		
+		<div id="titleRectangle">
+			<div id="title"><H2>IT255 Web Sistemi: DZ02</H2></div>
+		</div>
+		
+		
+			<div id="itemLeft" class="itemContainer" style="left:2.5%">
+				<img src = "images/image02.jpg" ></img>
+				<h3>Vesti</h3>
+				<div id="itemLeftText">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+					Curabitur eget iaculis ante. Suspendisse at diam sit amet est elementum eleifend. Mauris vitae gravida nisi, non bibendum odio. 
+					Morbi vehicula felis nec lorem finibus, eu eleifend felis venenatis. 
+					<a href="http://www.metropolitan.ac.rs/">Link example</a>
+				</div>
+			</div>
+		
+			<div id="itemCenter" class="itemContainer"  style="left:35%">
+				<img src = "images/image03.jpg" ></img>
+				<h3>Galerija</h3>
+				<div id="itemCenterText">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+					Curabitur eget iaculis ante. Suspendisse at diam sit amet est elementum eleifend. Mauris vitae gravida nisi, non bibendum odio. 
+					Morbi vehicula felis nec lorem finibus, eu eleifend felis venenatis. 
+					<a href="http://www.metropolitan.ac.rs/">Link example</a>
+				</div>
+			</div>
+			
+			<div id="itemRight" class="itemContainer"  style="left:67.5%">
+				<img src = "images/image04.jpg"></img>
+				<h3>Kontakt</h3>
+				<div id="itemRightText">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+					Curabitur eget iaculis ante. Suspendisse at diam sit amet est elementum eleifend. Mauris vitae gravida nisi, non bibendum odio. 
+					Morbi vehicula felis nec lorem finibus, eu eleifend felis venenatis. 
+					<a href="http://www.metropolitan.ac.rs/">Link example</a>
+				</div>
+			</div>
+			
+			
+			
+	</div>
+	<div class="footer">Copyright goran.zoranovic.2910@metropolitan.ac.rs 2017</div>
+	
+    </body>
+</html>
