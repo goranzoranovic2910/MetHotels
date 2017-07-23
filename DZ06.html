@@ -1,0 +1,79 @@
+<html>
+	<head> 
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+		
+		function getCountryInfo() {
+		  
+		  
+		  /*
+			http://services.groupkt.com/country/get/iso2code/IN
+			
+			Good:
+			{
+			  "RestResponse" : {
+				"messages" : [ "Country found matching code [IN]." ],
+				"result" : {
+				  "name" : "India",
+				  "alpha2_code" : "IN",
+				  "alpha3_code" : "IND"
+				}
+			  }
+			}
+		  
+			Bad:
+			{
+			  "RestResponse" : {
+				"messages" : [ "No matching country found for requested code [IU]." ]
+			  }
+			}
+		  */
+		  
+		  $.ajax({
+				url: "http://services.groupkt.com/country/get/iso2code/" + $('#country')[0].value,
+				success : onSuccess,
+				onerror : onError
+				});
+		  
+		  
+		}
+		
+		function onSuccess(data){			
+				
+				$('#responseData').empty();
+				
+				for(i = 0; i < data.RestResponse.messages.length; i++){
+					$('#responseData').append('<p>' + data.RestResponse.messages[i] + '</p>');
+				}
+				
+				// Ako drzava nije pronadjena result ce biti undefined
+				if(data.RestResponse.result){
+					$('#responseData').append('<p>Name:' + data.RestResponse.result.name + '</p>');
+					$('#responseData').append('<p>Alpha2 code:' + data.RestResponse.result.alpha2_code + '</p>');
+					$('#responseData').append('<p>Alpha3 code:' + data.RestResponse.result.alpha3_code + '</p>');
+				}
+		  }
+		  
+		function onError(data){
+			$('#responseData').empty();
+			$('#responseData').append('<p>Greska prilikom poziva servisa!</p>');
+		}
+		</script>
+		
+		
+	</head>
+	<body>
+	<form>
+	<label>Country Alpha2 code </label>
+	<input id="country" type="text" value="IN"></input>
+	</form>
+	<br>
+	<button type="button" onclick="getCountryInfo()">Get Country Info</button>
+	<br>
+	<label>Response</label>
+	<br>
+	<div id='responseData'></div>
+
+	</body>
+</html>
