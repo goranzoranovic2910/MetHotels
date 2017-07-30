@@ -1,5 +1,7 @@
 <?php 
 
+//DZ07
+
 if(isset($_GET['broj_indeksa'])) {
 
 

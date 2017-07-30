@@ -1,5 +1,7 @@
 <?php 
 
+// DZ07
+
 $_POST = json_decode(file_get_contents('php://input'),true);
 
 if(isset($_POST['broj_indeksa']) && isset($_POST['ime']) && isset($_POST['prezime']) && isset($_POST['datum_rodjenja'])) {
