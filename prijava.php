@@ -6,8 +6,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
 
-	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -38,64 +36,63 @@
   <body>
 	
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 well">
-				<h1>Welcome to MetHotels!</h1>
-				<?php
-					session_start();
-					if(isset($_SESSION['username'])){
-						
-						echo "<button type='button' class='btn btn-link btn-md'>Korisnik:".$_SESSION['username']."</button>";
-						echo "<br><a href='logout.php' class='btn btn-link btn-md' >Log out</a>";
-						
+		<div class="row" style="width:50%">
+
+
+
+			<?php 
+			include("userapi.php");
+
+			if(isset($_POST['submit'])){
+				
+				
+				$username =  $conn->real_escape_string($_POST['username']); 
+				$password = $_POST['password'];
+				if(isset($_POST['username']) && isset($_POST['password'])){
+					if(passwordValid($username,$password)){
+						session_start();
+						$_SESSION['username'] = $username;
 					}else{
-				
-						echo "<a href='prijava.php' class='btn btn-link btn-md' >Prijava</a>";
-						echo "<br><a href='registerUser.php' class='btn btn-link btn-md' >Registracija</a>";
+						echo "Pogresan username ili password";
 					}
+				}else{
+					echo "Niste uneli sve podatke";
+					
+				}
+			}
+			 
+			if(isset($_SESSION['username'])){
+				echo "Vec ste prijavljeni!";
+				header("Location: index.php");
+			}else{
+			?>
+
+			<form action="prijava.php" method="POST">
+
+				<div class="form-group">
+				  <label for="username">Korisnicko ime:</label>
+					<input type="text" name="username"  class="form-control"/>
+				</div>
+
+				<div class="form-group">
+				  <label for="password">Sifra:</label>
+				  <input type="password" name="password"  class="form-control"/>
+				</div>
+
 				
-				?>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-lg-3 col-md-6 col-xs-12 jumbotron" style="background-color:paleturquoise">
-				<h2>Home</h2>
-				
-				<p>MetHotels je web aplikacija koja je aplikacija koja omogućava rezervaciju soba.</p>
-			
-			</div>
-			
-			<div class="col-lg-3 col-md-6 col-xs-12 jumbotron" style="background-color:aliceblue">
-			
-			<h2>Rezervacije</h2>
-				
-				<p>Rezervisite vasu sobu online putem nase aplikacije.</p>
-				<b>
-			
-			</div>
-			
-			
-			
-			<div class="col-lg-3 col-md-6 col-xs-12 jumbotron" style="background-color:antiquewhite">
-			
-				<h2>Galerija</h2>
-				
-				<p>Pogledajte slike hotela i njegove okoline.</p>
-				<b>
-			
-			</div>
-			
-			<div class="col-lg-3 col-md-6 col-xs-12 jumbotron" style="background-color:lightsteelblue">
-			
-				<h2>O nama</h2>
-				
-				<p>MetHotels je web aplikacija koja je aplikacija koja omogućava rezervaciju soba..</p>
-			
-			
-			</div>
+				<input type="submit" name="submit" value="Uloguj se" class="btn btn-primary"/>
+			</form>
+
+			<?php
+			}
+			?>
+
 		</div>
 	</div>
-
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
