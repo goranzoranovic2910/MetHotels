@@ -10,13 +10,11 @@ $result = "[";
 		die("Konekcija neuspesna: " . $db->connect_error);
 	}
 
-	$sql = "SELECT broj_sobe, broj_kreveta, broj_kvadrata FROM soba";
+	$sql = "SELECT id, ime FROM hotel";
     $query = $db->prepare($sql);
     $query->execute();
     $query->store_result();
-		$query->bind_result($bs, $bk, $bkv);
-
-
+		$query->bind_result($id, $ime);
 
     if ($query->num_rows > 0) {
 
@@ -27,7 +25,7 @@ $result = "[";
 				$result .=",";
 			}
 
-			$result .= "{ \"broj_sobe\":".$bs.", \"broj_kreveta\":".$bk.", \"broj_kvadrata\":".$bkv."}";
+			$result .= "{ \"id\":".$id.", \"ime\":\"".$ime."\"}";
 			$first = false;
 		}
 	}
