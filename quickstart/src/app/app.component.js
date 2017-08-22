@@ -9,28 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-require("rxjs/Rx");
-require("rxjs/add/operator/map");
 var AppComponent = (function () {
-    function AppComponent(http) {
-        this.http = http;
-        this.name = 'Zadatak br. 10';
+    function AppComponent() {
+        this.name = "MetHotels";
     }
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.http.get('http://localhost/it255/methotels/pretragaSoba.php')
-            .map(function (response) { return response.json(); })
-            .subscribe(function (sveSobe) { _this.sobe = sveSobe; console.log(_this.sobe); });
-    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>{{name}}</h1>\n\n            <div id=\"kreveti\">\n               <label for=\"brojKreveta\">Br. kreveta:</label>\n               <input type=\"text\" [(ngModel)]=\"brojKreveta\" name=\"brojKreveta\">\n            </div>\n            <br>\n            <div id=\"kvadrati\">\n               <label for=\"brojKvadrata\">Br. kvadrata:</label>\n               <input type=\"text\" [(ngModel)]=\"brojKvadrata\" name=\"brojKvadrata\">\n            </div>\n\n            <ul>\n              <li *ngFor=\"let soba of sobe | filterSoba:brojKreveta:brojKvadrata\">\n                <h3>Soba:{{soba.broj_sobe}}</h3>\n                <p>Broj kreveta:{{soba.broj_kreveta}}</p>\n                <p>Broj kvadrata:{{soba.broj_kvadrata}}</p>\n              </li>\n            </ul>\n  "
+        template: "<h1>{{name}}</h1>\n  <a routerLink=\"/pretraga\">Pretraga</a>\n  <a routerLink=\"/newroom\">Dodaj sobu</a>\n  <a routerLink=\"/newhotel\">Dodaj hotel</a>\n  <router-outlet></router-outlet>\n  "
     }),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

@@ -4,7 +4,7 @@ import {Soba} from './app.soba';
 @Pipe({name:'filterSoba'})
 export class FilterSobaPipe implements PipeTransform{
 
-    transform(value:Array,
+    transform(value:Array<Soba>,
       brojKreveta:string,
       brojKvadrata:string){
 
