@@ -59,8 +59,8 @@ export class NewRoomComponent implements OnInit {
     }
 
     dodajSobu(){
-      var select = document.getElementById("hoteliSelect");
-      this.novaSoba.id_hotel = select.options[select.selectedIndex].value;
+      var select = <HTMLSelectElement>document.getElementById("hoteliSelect");
+      this.novaSoba.id_hotel = Number(select.options[select.selectedIndex].value);
       let bodyString = JSON.stringify(this.novaSoba);
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
