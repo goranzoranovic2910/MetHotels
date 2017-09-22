@@ -21,14 +21,24 @@ var PretragaComponent = (function () {
         var _this = this;
         this.http.get('http://localhost/it255/methotels/pretragaSoba.php')
             .map(function (response) { return response.json(); })
-            .subscribe(function (sveSobe) { _this.sobe = sveSobe; console.log(_this.sobe); });
+            .subscribe(function (sveSobe) {
+            _this.sobe = sveSobe;
+            console.log(_this.sobe);
+        });
+        $('#tabelaSobe').DataTable({
+            "paging": false,
+            "ordering": false,
+            "info": false,
+            "searching": false //vec implementirano sa Angular filterom
+        });
+        console.log("Inicijalizovana tabela...");
     };
     return PretragaComponent;
 }());
 PretragaComponent = __decorate([
     core_1.Component({
         selector: 'app-pretraga',
-        template: "<h3>{{name}}</h3>\n\n            <div id=\"kreveti\">\n               <label for=\"brojKreveta\">Br. kreveta:</label>\n               <input type=\"text\" [(ngModel)]=\"brojKreveta\" name=\"brojKreveta\">\n            </div>\n            <br>\n            <div id=\"kvadrati\">\n               <label for=\"brojKvadrata\">Br. kvadrata:</label>\n               <input type=\"text\" [(ngModel)]=\"brojKvadrata\" name=\"brojKvadrata\">\n            </div>\n\n            <ul>\n              <li *ngFor=\"let soba of sobe | filterSoba:brojKreveta:brojKvadrata\">\n                <h3>Soba:{{soba.broj_sobe}}</h3>\n                <p>Broj kreveta:{{soba.broj_kreveta}}</p>\n                <p>Broj kvadrata:{{soba.broj_kvadrata}}</p>\n              </li>\n            </ul>\n  "
+        template: "<h3>{{name}}</h3>\n\n            <div id=\"kreveti\">\n               <label for=\"brojKreveta\">Br. kreveta:</label>\n               <input type=\"text\" [(ngModel)]=\"brojKreveta\" name=\"brojKreveta\">\n            </div>\n            <br>\n            <div id=\"kvadrati\">\n               <label for=\"brojKvadrata\">Br. kvadrata:</label>\n               <input type=\"text\" [(ngModel)]=\"brojKvadrata\" name=\"brojKvadrata\">\n            </div>\n\n            <div>\n              <table id=\"tabelaSobe\" class=\"table table-striped table-bordered\" cellspacing=\"0\" width=\"100%\">\n                <thead>\n                    <tr>\n                        <th>Broj sobe</th>\n                        <th>Broj kreveta</th>\n                        <th>Broj kvadrata</th>\n                        <th>Izmena</th>\n                        <th>Brisanje</th>\n                    </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let soba of sobe | filterSoba:brojKreveta:brojKvadrata\">\n                    <td>{{soba.broj_sobe}}</td>\n                    <td>{{soba.broj_kreveta}}</td>\n                    <td>{{soba.broj_kvadrata}}</td>\n                    <td><a routerLink=\"/updateRoom/{{soba.broj_sobe}}\">Izmeni</a></td>\n                    <td><a routerLink=\"/deleteRoom/{{soba.broj_sobe}}\">Obrisi</a></td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n  "
     }),
     __metadata("design:paramtypes", [http_1.Http])
 ], PretragaComponent);

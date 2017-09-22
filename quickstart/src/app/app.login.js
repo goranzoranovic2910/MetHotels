@@ -28,7 +28,7 @@ var LoginComponent = (function () {
         var bodyString = JSON.stringify({ username: this.username, password: this.password });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        this.http.post("http://localhost/it255/methotels/login.php", bodyString, options)
+        this.http.post("http://localhost/it255/methotels/login.php?session_id", bodyString, options)
             .map(function (res) { return res.json(); })
             .subscribe(function (response) {
             console.log(response);

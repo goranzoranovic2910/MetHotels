@@ -40,7 +40,7 @@ export class LoginComponent{
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 
-      this.http.post("http://localhost/it255/methotels/login.php", bodyString, options)
+      this.http.post("http://localhost/it255/methotels/login.php?session_id", bodyString, options)
                               .map((res:Response) => res.json())
                               .subscribe(response => {
                                 console.log(response);

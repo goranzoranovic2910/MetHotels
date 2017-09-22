@@ -2,6 +2,8 @@ import { Component} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PretragaComponent } from './app.pretraga.component';
 import { NewRoomComponent }  from './app.newroom.component';
+import { UpdateRoomComponent } from './app.updateroom.component';
+import { DeleteRoomComponent } from './app.deleteroom.component';
 import { NewHotelComponent }  from './app.newhotel.component';
 import { CookieService } from 'ngx-cookie';
 

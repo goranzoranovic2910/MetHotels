@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { PretragaComponent } from './app.pretraga.component';
 import { NewRoomComponent }  from './app.newroom.component';
+import { UpdateRoomComponent } from './app.updateroom.component';
+import { DeleteRoomComponent } from './app.deleteroom.component';
 import { NewHotelComponent }  from './app.newhotel.component';
 import { LoginComponent } from './app.login';
 import { RegisterComponent } from './app.register';
@@ -33,6 +35,14 @@ import { CookieModule } from 'ngx-cookie';
           component:NewRoomComponent
         },
         {
+          path:'updateRoom/:broj_sobe',
+          component:UpdateRoomComponent
+        },
+        {
+          path:'deleteRoom/:broj_sobe',
+          component:DeleteRoomComponent
+        },
+        {
           path:'newhotel',
           component:NewHotelComponent
         },
@@ -46,7 +56,7 @@ import { CookieModule } from 'ngx-cookie';
         },
       ]
     ) ],
-  declarations: [ AppComponent, FilterSobaPipe, NewRoomComponent, PretragaComponent, NewHotelComponent, LoginComponent, RegisterComponent ],
+  declarations: [ AppComponent, FilterSobaPipe, NewRoomComponent, UpdateRoomComponent, DeleteRoomComponent, PretragaComponent, NewHotelComponent, LoginComponent, RegisterComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ ]
 })

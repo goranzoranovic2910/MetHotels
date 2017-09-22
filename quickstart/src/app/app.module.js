@@ -10,6 +10,8 @@ var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var app_pretraga_component_1 = require("./app.pretraga.component");
 var app_newroom_component_1 = require("./app.newroom.component");
+var app_updateroom_component_1 = require("./app.updateroom.component");
+var app_deleteroom_component_1 = require("./app.deleteroom.component");
 var app_newhotel_component_1 = require("./app.newhotel.component");
 var app_login_1 = require("./app.login");
 var app_register_1 = require("./app.register");
@@ -44,6 +46,14 @@ AppModule = __decorate([
                     component: app_newroom_component_1.NewRoomComponent
                 },
                 {
+                    path: 'updateRoom/:broj_sobe',
+                    component: app_updateroom_component_1.UpdateRoomComponent
+                },
+                {
+                    path: 'deleteRoom/:broj_sobe',
+                    component: app_deleteroom_component_1.DeleteRoomComponent
+                },
+                {
                     path: 'newhotel',
                     component: app_newhotel_component_1.NewHotelComponent
                 },
@@ -56,7 +66,7 @@ AppModule = __decorate([
                     component: app_register_1.RegisterComponent
                 },
             ])],
-        declarations: [app_component_1.AppComponent, filter_sobe_1.FilterSobaPipe, app_newroom_component_1.NewRoomComponent, app_pretraga_component_1.PretragaComponent, app_newhotel_component_1.NewHotelComponent, app_login_1.LoginComponent, app_register_1.RegisterComponent],
+        declarations: [app_component_1.AppComponent, filter_sobe_1.FilterSobaPipe, app_newroom_component_1.NewRoomComponent, app_updateroom_component_1.UpdateRoomComponent, app_deleteroom_component_1.DeleteRoomComponent, app_pretraga_component_1.PretragaComponent, app_newhotel_component_1.NewHotelComponent, app_login_1.LoginComponent, app_register_1.RegisterComponent],
         bootstrap: [app_component_1.AppComponent],
         providers: []
     })
