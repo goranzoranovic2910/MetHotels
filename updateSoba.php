@@ -19,7 +19,7 @@
 			die("Konekcija neuspesna: " . $db->connect_error);
 		}
 
-		$sql = "INSERT INTO soba(broj_sobe, broj_kreveta, broj_kvadrata, id_hotel) VALUES ('".$broj_sobe."', '".$broj_kreveta."', '".$broj_kvadrata."', '".$id_hotel."');";
+		$sql = "update soba set broj_sobe='".$broj_sobe."', broj_kreveta='".$broj_kreveta."', broj_kvadrata='".$broj_kvadrata."', id_hotel='".$id_hotel."' where broj_sobe='".$broj_sobe."';";
 
 		$result = $db->query($sql);
 

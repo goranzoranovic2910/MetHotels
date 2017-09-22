@@ -6,12 +6,9 @@
 
 	$_POST = json_decode(file_get_contents('php://input'),true);
 
-	if(isset($_POST['broj_sobe']) && isset($_POST['broj_kreveta']) && isset($_POST['broj_kvadrata'])  && isset($_POST['id_hotel'])) {
+	if(isset($_POST['broj_sobe'])) {
 
 		$broj_sobe = $_POST['broj_sobe'];
-		$broj_kreveta = $_POST['broj_kreveta'];
-		$broj_kvadrata = $_POST['broj_kvadrata'];
-		$id_hotel = $_POST['id_hotel'];
 
 		$db = new mysqli('localhost', 'root','', 'methotels');
 
@@ -19,7 +16,7 @@
 			die("Konekcija neuspesna: " . $db->connect_error);
 		}
 
-		$sql = "INSERT INTO soba(broj_sobe, broj_kreveta, broj_kvadrata, id_hotel) VALUES ('".$broj_sobe."', '".$broj_kreveta."', '".$broj_kvadrata."', '".$id_hotel."');";
+		$sql = "delete from soba where broj_sobe='".$broj_sobe."';";
 
 		$result = $db->query($sql);
 
@@ -39,7 +36,6 @@
 		$db->close ();
 	}
 	else{
-
 		echo '{ "result":"prazan post objekat"}';
 	}
 ?>
